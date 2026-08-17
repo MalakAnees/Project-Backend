@@ -5,6 +5,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
+const authRoutes = require('./routes/authRoutes');
 const taskRoutes = require("./routes/task.routes");
 
 dotenv.config();
@@ -12,6 +13,8 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
+
+app.use('/api/auth', authRoutes);
 
 app.use("/uploads", express.static("uploads"));
 

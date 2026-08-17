@@ -33,7 +33,7 @@ Smart Task Management is a web application that helps users organize and manage 
 ##  How to Run Locally
 1. Clone the repository:
    ```bash
-   git clone <YOUR_GITHUB_REPO_LINK>
+   git clone <https://github.com/MalakAnees/Project-Backend>
 
 Install dependencies:
 
@@ -47,6 +47,28 @@ MONGO_URI=mongodb://127.0.0.1:27017/smart_task_management
 Run the project:
 
 npm start
+
+# Authentication Module - Smart Task Management System
+
+This is the Authentication Module for the Smart Task Management System. It handles user registration, authentication using JWT (JSON Web Tokens), and password encryption using bcryptjs.
+
+##  User Roles
+- **Admin**: Has full access to manage tasks and users.
+- **User**: Standard user who can create and manage their assigned tasks.
+
+##  API Routes
+
+### 1. Register User
+- **Route:** `POST /api/auth/signup`
+- **Body Example:**
+```json
+{
+  "name": "Malak",
+  "email": "malak@example.com",
+  "password": "password123",
+  "role": "Admin",
+  "phone": "01012345678"
+}
 
    
 

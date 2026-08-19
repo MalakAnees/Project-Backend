@@ -70,5 +70,45 @@ This is the Authentication Module for the Smart Task Management System. It handl
   "phone": "01012345678"
 }
 
-   
+# Smart Task Management System - Auth Module
+
+This repository contains the Authentication module for the Smart Task Management System, built using Node.js, Express, and MongoDB.
+
+---
+
+##  Tech Stack & Dependencies
+
+* **Backend:** Node.js, Express.js
+* **Database:** MongoDB, Mongoose
+* **Authentication:** JSON Web Tokens (JWT)
+* **Security:** Bcrypt.js (Password Hashing)
+
+---
+
+##  User Roles
+
+The system supports the following user roles upon registration:
+* **`Admin`**
+* **`ProjectManager`**
+* **`Employee`** *(Default Role)*
+
+---
+
+##  API Endpoints
+
+| Method | Endpoint | Description | Access |
+| :--- | :--- | :--- | :--- |
+| **`POST`** | `/api/auth/signup` | Register a new user account | Public |
+| **`POST`** | `/api/auth/login` | Authenticate user credentials and return a Bearer JWT | Public |
+| **`GET`** | `/api/auth/profile` | Access protected user profile details | Private (Requires Bearer Token) |
+
+---
+
+## Authentication & Header Format
+
+Protected routes require a valid JSON Web Token (JWT) sent via the `Authorization` header.
+
+**Header Format:**
+```text
+Authorization: Bearer <YOUR_JWT_TOKEN>
 

@@ -7,18 +7,19 @@ const dotenv = require("dotenv");
 
 const authRoutes = require('./routes/authRoutes');
 const taskRoutes = require("./routes/task.routes");
-
+const cors = require('cors');
 dotenv.config();
 
 const app = express();
 
+app.use(cors({ origin: 'http://localhost:4200' }));
+
 app.use(express.json());
 
-app.use('/api/auth', authRoutes);
-
+app.use('/api/v1/auth', authRoutes);
 app.use("/uploads", express.static("uploads"));
 
-app.use("/api/tasks", taskRoutes);
+app.use("/api/v1/tasks", taskRoutes);
 
 app.get("/", (req, res) => {
     res.status(200).json({

@@ -11,14 +11,14 @@ const generateToken = (id, role) => {
 
 exports.signup = async (req, res) => {
   try {
-    const { name, email, password, role, phone } = req.body;
+    const { firstName, lastName, email, password, role, phone } = req.body;
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'Email already exists' });
     }
 
-    const user = await User.create({ name, email, password, role, phone });
+    const user = await User.create({ firstName, lastName, email, password, role, phone });
     const token = generateToken(user._id, user.role);
 
     res.status(201).json({
@@ -26,7 +26,8 @@ exports.signup = async (req, res) => {
       token,
       user: {
         id: user._id,
-        name: user.name,
+       firstName: user.firstName,
+       lastName: user.lastName ,
         email: user.email,
         role: user.role
       }
@@ -58,7 +59,8 @@ exports.login = async (req, res) => {
       token,
       user: {
         id: user._id,
-        name: user.name,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
         role: user.role
       }
